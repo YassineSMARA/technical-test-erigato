@@ -64,7 +64,7 @@ async function getNfts(mintPublicKeys: PublicKey[]): Promise<Nft[]> {
 /**
  * Fetch the filtered program accounts for the given public key
  * @param pubKey Public key to filter the program accounts
- * @returns Array of ParseAccountData
+ * @returns {Promise<ParsedAccountData[]>}
  */
 async function getAccounts(pubKey: PublicKey): Promise<ParsedAccountData[]> {
   const parsedProgramAccounts = await connection.getParsedProgramAccounts(
@@ -92,6 +92,7 @@ async function getAccounts(pubKey: PublicKey): Promise<ParsedAccountData[]> {
 /**
  * Fetch the URI with a timeout
  * @param uri URI to fetch
+ * @returns {Promise<Response | null>}
  */
 async function fetchTimeout(uri: string): Promise<Response | null> {
   const controller = new AbortController();
